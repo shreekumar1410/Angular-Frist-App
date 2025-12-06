@@ -1,0 +1,63 @@
+<div class="form-container">
+  <h2>Login</h2>
+
+  <form #loginForm="ngForm">
+    <!-- Email -->
+    <div class="form-group">
+      <label>Email <span class="required">*</span></label>
+      <input type="email" 
+             [(ngModel)]="login.email" 
+             name="email"
+             required
+             pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+             #emailError="ngModel"
+             class="form-input"
+             placeholder="Enter your email" />
+      <div *ngIf="emailError.invalid && emailError.touched" class="error-message">
+        <span *ngIf="emailError.errors?.['required']">Email is required.</span>
+        <span *ngIf="emailError.errors?.['pattern']">Please enter a valid email address.</span>
+      </div>
+    </div>
+
+    <!-- Password -->
+    <div class="form-group">
+      <label>Password <span class="required">*</span></label>
+      <input type="password" 
+             [(ngModel)]="login.password" 
+             name="password"
+             required
+             minlength="8"
+             #passwordError="ngModel"
+             class="form-input"
+             placeholder="Enter your password" />
+      <div *ngIf="passwordError.invalid && passwordError.touched" class="error-message">
+        <span *ngIf="passwordError.errors?.['required']">Password is required.</span>
+        <span *ngIf="passwordError.errors?.['minlength']">Password must be at least 8 characters.</span>
+      </div>
+    </div>
+
+    <!-- Remember Me -->
+    <div class="form-group checkbox-group">
+      <label class="checkbox-label">
+        <input type="checkbox" [(ngModel)]="login.rememberMe" name="rememberMe" />
+        <span>Remember me</span>
+      </label>
+    </div>
+
+    <button type="submit" 
+            routerLink="/profile" 
+            class="btn-submit" 
+            (click)="onLogin()"
+            [disabled]="loginForm.invalid">
+      Login
+    </button>
+
+    <div class="forgot-password">
+      <a href="#">Forgot Password?</a>
+    </div>
+
+    <div class="signup-link">
+      Don't have an account? <a routerLink="/register">Sign up here</a>
+    </div>
+  </form>
+</div>

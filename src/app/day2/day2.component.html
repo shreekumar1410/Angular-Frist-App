@@ -1,0 +1,27 @@
+
+<div class="form-group">
+      <label [ngStyle]="{'color': emailError.invalid && emailError.touched ? 'red' : 'black'}">Email</label>
+      <input type="email"  [(ngModel)]="registration.email" name="email" required #emailError="ngModel"/>  
+</div>
+
+<div *ngIf="emailError.invalid && emailError.touched" class="error">
+    Email is required.
+</div>
+
+
+<div [ngClass]="'bgclass'">I am shree</div>
+<div [ngClass]="{'bgclass':registration.email=='shree'}" [ngStyle]="{'display': registration.email == '' ? 'none' : 'block'}">I am {{registration.email}}</div>
+<button class="btn-submit" (click)="Onsubmit()">Register</button>
+<br>
+
+{{today}}
+<br>
+{{50 | currency:'INR'}}
+<br>
+{{0.15 | percent}}
+<br>
+{{registration | json}}
+<br>
+{{registration.email | uppercase}}
+<br>
+{{registration.email | demopipe}}   

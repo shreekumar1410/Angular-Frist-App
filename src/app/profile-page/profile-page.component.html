@@ -1,0 +1,52 @@
+<div class="profile-container">
+  <div class="header">
+    <h1>My Profile</h1>
+    <p class="subtitle">Welcome to Your Account Dashboard</p>
+  </div>
+
+  <div class="profile-card">
+    <div class="profile-avatar">
+      <i class="avatar-icon">👤</i>
+    </div>
+    
+    <div class="profile-info">
+      <h2>{{ userName || 'User Profile' }}</h2>
+      <p class="info-text">Manage your account settings and preferences</p>
+    </div>
+  </div>
+
+  <!-- <div class="actions-container">
+    <div class="action-card">
+      <div class="action-icon">📝</div>
+      <h3>Edit Profile</h3>
+      <p>Update your personal information</p>
+      <button class="action-btn" (click)="editProfile()">Edit</button>
+    </div>
+
+    <div class="action-card">
+      <div class="action-icon">🔐</div>
+      <h3>Change Password</h3>
+      <p>Update your security credentials</p>
+      <button class="action-btn" (click)="changePassword()">Change</button>
+    </div>
+
+    <div class="action-card">
+      <div class="action-icon">⚙️</div>
+      <h3>Settings</h3>
+      <p>Customize your preferences</p>
+      <button class="action-btn" (click)="openSettings()">Settings</button>
+    </div>
+
+    <div class="action-card">
+      <div class="action-icon">📞</div>
+      <h3>Support</h3>
+      <p>Get help and contact support</p>
+      <button class="action-btn" (click)="contactSupport()">Contact</button>
+    </div>
+  </div> -->
+
+  <div class="button-group">
+    <button routerLink="/login" class="btn btn-secondary" (click)="logout()">LogIn</button>
+    <button routerLink="/register" class="btn btn-primary">Register New Account</button>
+  </div>
+</div>
