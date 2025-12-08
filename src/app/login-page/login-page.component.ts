@@ -28,6 +28,10 @@ export class LoginPageComponent {
   }
 
   onLogin() {
+
+    const storedData = localStorage.getItem('currentUser');
+    const usersArray = storedData ? JSON.parse(storedData) : [];
+
     if (this.isFormValid()) {
       console.log('Login Data:', this.login);
       
@@ -36,8 +40,14 @@ export class LoginPageComponent {
         console.log('Email saved for next login');
       }
       
-      alert('Login Successful! Welcome back');
-      this.resetForm();
+      const userdetail = usersArray.find((user: { email: string; password: string; }) => user.email === this.login.email && user.password === this.login.password);
+
+      if (userdetail) {
+        alert('Login Successful! Welcome back');
+        this.resetForm();
+      } else {
+        alert('Invalid email or password');
+      }
     } else {
       alert('Please enter valid email and password');
     }

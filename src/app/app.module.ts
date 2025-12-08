@@ -9,6 +9,7 @@ import { Day2Component } from './day2/day2.component';
 import { DemopipePipe } from './demopipe.pipe';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { LoginPageComponent } from './login-page/login-page.component';
     Day2Component,
     DemopipePipe,
     ProfilePageComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    AboutComponent
     
   ],
   imports: [

@@ -11,12 +11,15 @@
              name="name"
              required
              minlength="3"
+             pattern="[A-Za-z ]+"
+             (input)="onNameInput($event)"
              #nameError="ngModel"
              class="form-input"
              placeholder="Enter your full name" />
       <div *ngIf="nameError.invalid && nameError.touched" class="error-message">
         <span *ngIf="nameError.errors?.['required']">Name is required.</span>
         <span *ngIf="nameError.errors?.['minlength']">Name must be at least 3 characters.</span>
+        <span *ngIf="nameError.errors?.['pattern']">Name can contain letters and spaces only.</span>
       </div>
     </div>
 
@@ -45,6 +48,8 @@
              name="number"
              required
              pattern="[0-9]{10}"
+             maxlength="10"
+             (input)="onPhoneInput($event)"
              #phoneError="ngModel"
              class="form-input"
              placeholder="Enter 10-digit phone number" />
@@ -126,10 +131,14 @@
     <button type="submit" 
             class="btn-submit" 
             (click)="Onsubmit()"
-            [disabled]="myForm.invalid"
-            routerLink="/login">
+            routerLink="/login"
+            [disabled]="myForm.invalid">
       Register
     </button>
+
+    <div class="have-account" style="text-align:center; margin-top:12px;">
+      Already have an account? <a routerLink="/login">Login</a>
+    </div>
 
   </form>
 </div>
