@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -12,6 +13,8 @@ export class LoginPageComponent {
     password: '',
     rememberMe: false
   };
+
+  router = inject(Router);
 
   // Validation methods
   isValidEmail(email: string): boolean {
@@ -28,29 +31,45 @@ export class LoginPageComponent {
   }
 
   onLogin() {
-
     const storedData = localStorage.getItem('currentUser');
     const usersArray = storedData ? JSON.parse(storedData) : [];
 
-    if (this.isFormValid()) {
-      console.log('Login Data:', this.login);
-      
-      if (this.login.rememberMe) {
-        localStorage.setItem('userEmail', this.login.email);
-        console.log('Email saved for next login');
-      }
-      
-      const userdetail = usersArray.find((user: { email: string; password: string; }) => user.email === this.login.email && user.password === this.login.password);
-
-      if (userdetail) {
-        alert('Login Successful! Welcome back');
-        this.resetForm();
-      } else {
-        alert('Invalid email or password');
-      }
-    } else {
+    if (!this.isValidEmail(this.login.email) || !this.isValidPassword(this.login.password)) {
       alert('Please enter valid email and password');
+      return;
     }
+
+    // Save remembered email
+    if (this.login.rememberMe) {
+      localStorage.setItem('userEmail', this.login.email);
+    }
+
+    // Find by email first
+    const userByEmail = usersArray.find((u: any) => u.email === this.login.email);
+
+    if (!userByEmail) {
+      alert('User not found');
+      return;
+    }
+
+    // Email exists — check password
+    if (userByEmail.password !== this.login.password) {
+      alert('Password is incorrect');
+      return;
+    }
+
+    // Success
+    alert('Login Successful! Welcome back');
+    try {
+      // store the logged in user's email and object for profile lookup
+      localStorage.setItem('loggedInUserEmail', this.login.email);
+      localStorage.setItem('loggedInUser', JSON.stringify(userByEmail));
+    } catch (e) {
+      console.warn('Could not persist logged-in user', e);
+    }
+
+    this.router.navigate(['/profile']);
+    this.resetForm();
   }
 
   resetForm(): void {

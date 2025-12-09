@@ -1,0 +1,51 @@
+:host {
+	display: block;
+}
+
+.add-container {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.add-container h2 {
+	width: 100%;
+	text-align: left;
+	margin: 0 0 8px 0;
+	font-size: 18px;
+}
+
+.add-container input[type="text"],
+.add-container input[type="number"] {
+	padding: 10px;
+	border-radius: 8px;
+	border: 1px solid #dfe6ee;
+	width: 220px;
+}
+
+.add-container button {
+	padding: 10px 14px;
+	border-radius: 8px;
+	border: none;
+	background: linear-gradient(135deg,#3498db 0%,#2980b9 100%);
+	color: white;
+	cursor: pointer;
+	font-weight: 600;
+}
+
+.add-container button:hover {
+	transform: translateY(-2px);
+}
+
+@media (max-width: 640px) {
+	.add-container input[type="text"], .add-container input[type="number"] {
+		width: 100%;
+		max-width: 420px;
+	}
+	.add-container {
+		gap: 8px;
+		align-items: stretch;
+	}
+}

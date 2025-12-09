@@ -10,6 +10,9 @@ import { DemopipePipe } from './demopipe.pipe';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { AboutComponent } from './about/about.component';
+import { ProductPageComponent } from './product-page/product-page.component';
+import { ProductAddComponent } from './product-page/product-add/product-add.component';
+import { ProductListComponent } from './product-page/product-list/product-list.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { AboutComponent } from './about/about.component';
     DemopipePipe,
     ProfilePageComponent,
     LoginPageComponent,
-    AboutComponent
+    AboutComponent,
+    ProductPageComponent,
+    ProductAddComponent,
+    ProductListComponent
     
   ],
   imports: [

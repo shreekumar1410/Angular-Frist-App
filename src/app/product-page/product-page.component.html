@@ -1,0 +1,6 @@
+<div>
+    <app-product-add (productAdded)="onProductAdd($event)"></app-product-add>
+    <br><hr><br>
+    <app-product-list [productItems]="products" (removeItem)="onProductRemove($event)"></app-product-list>
+
+</div>

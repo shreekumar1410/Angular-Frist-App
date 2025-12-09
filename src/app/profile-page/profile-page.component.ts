@@ -10,15 +10,48 @@ export class ProfilePageComponent implements OnInit {
   userEmail: string = '';
 
   ngOnInit(): void {
-    // Load user data from localStorage or session
-    const savedUser = localStorage.getItem('currentUser');
-    if (savedUser) {
+    // Load the logged-in user information.
+    // We prefer an explicit loggedInUser object/email, but fall back to scanning the users array.
+    const loggedObj = localStorage.getItem('loggedInUser');
+    const loggedEmail = localStorage.getItem('loggedInUserEmail');
+
+    if (loggedObj) {
       try {
-        const userData = JSON.parse(savedUser);
-        this.userName = userData.name || 'User';
+        const userData = JSON.parse(loggedObj);
+        this.userName = userData.name || 'User Name';
         this.userEmail = userData.email || '';
+        return;
       } catch (error) {
-        console.log('Could not load user data');
+        console.warn('Could not parse loggedInUser', error);
+      }
+    }
+
+    if (loggedEmail) {
+      const stored = localStorage.getItem('currentUser');
+      const usersArray = stored ? JSON.parse(stored) : [];
+      const found = usersArray.find((u: any) => u.email === loggedEmail);
+      if (found) {
+        this.userName = found.name || 'User Name';
+        this.userEmail = found.email || '';
+        return;
+      }
+    }
+
+    // final fallback: try reading currentUser (may be array or single object)
+    const saved = localStorage.getItem('currentUser');
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          // show first user as fallback
+          this.userName = parsed[0].name || 'User Name';
+          this.userEmail = parsed[0].email || '';
+        } else if (typeof parsed === 'object' && parsed !== null) {
+          this.userName = parsed.name || 'User Name';
+          this.userEmail = parsed.email || '';
+        }
+      } catch (e) {
+        console.warn('Could not parse currentUser', e);
         this.userName = 'Welcome User';
       }
     } else {
@@ -58,7 +91,9 @@ export class ProfilePageComponent implements OnInit {
   logout(): void {
     console.log('Logout clicked');
     // Clear user data
-    localStorage.removeItem('currentUser');
+    // Don't remove all users; only clear logged-in user/session keys
+    localStorage.removeItem('loggedInUser');
+    localStorage.removeItem('loggedInUserEmail');
     localStorage.removeItem('userEmail');
     alert('Logged out successfully');
     // Navigation to login will happen via routerLink in template
