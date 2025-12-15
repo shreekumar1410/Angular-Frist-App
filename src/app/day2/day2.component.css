@@ -1,7 +1,18 @@
 .bgclass{
     background-color: lightblue;
 }
-
+    
 .error{
     color: red;
+}
+
+.button {
+    margin: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
 }

@@ -33,7 +33,7 @@
 <!-- Day 4-->
 
 <!--Day 5-->
-<h1>Day 5</h1>
+<!-- <h1>Day 5</h1>
 
 {{ title }}
 
@@ -43,5 +43,20 @@
   </li>
 </ul>
 
-    <button mat-raised-button color="primary">Primary</button>
+    <button mat-raised-button color="primary">Primary</button> -->
+
+
+<!-- Day 6 -->
+
+<button mat-raised-button color="primary" class="button" (click)="click()">Click Me</button>
+
+
+    <!-- The AG Grid component -->
+    <ag-grid-angular 
+    class="ag-theme-alpine"
+    style="width: 600px; height: 400px;"
+    [rowData]="rowData"
+    [columnDefs]="colDefs">
+</ag-grid-angular>
+
 

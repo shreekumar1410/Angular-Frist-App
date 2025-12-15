@@ -7,4 +7,14 @@ import { Component } from '@angular/core';
 })
 export class AboutComponent {
 
+  // obs: any;
+
+  // constructor(private service: ) {}
+
+  // click(){
+  //   this.obs.subscribe((data:any)=>{
+  //     console.log(data);
+  //   });
+  // }
+
 }

@@ -9,12 +9,12 @@ import { authGuard } from './auth.guard';
 import { ProductPageComponent } from './product-page/product-page.component';
 
 const routes: Routes = [
-  {path:'',component: ProfilePageComponent},
-  {path:'sample',component: Day2Component},
-  {path:'about/:samplenamez',component: AboutComponent},
+  { path:'',component: Day2Component},
+  { path:'sample',component: Day2Component},
+  { path:'about',component: AboutComponent},
   { path: 'profile', component: ProfilePageComponent, canActivate: [authGuard] },
-  {path:'login',component: LoginPageComponent},
-  {path:'register',component: RegistrationPageComponent},
+  { path:'login',component: LoginPageComponent},
+  { path:'register',component: RegistrationPageComponent},
   { path: 'products', component: ProductPageComponent }
 
 ];

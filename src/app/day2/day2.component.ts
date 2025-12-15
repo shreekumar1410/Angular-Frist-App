@@ -1,9 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { AppserviceService } from '../appservice.service';
-// import { MatButtonModule } from '@angular/material/button';
-// import { MatDividerModule } from '@angular/material/divider';
-// import { MatIconModule } from '@angular/material/icon';
+import { Observable } from 'rxjs';
+import type { ColDef } from 'ag-grid-community'; 
 
 @Component({
   selector: 'app-day2',
@@ -21,13 +20,45 @@ export class Day2Component {
   // console.log(this.registration);
   // }
 
-  title = '';
-  products:any=[];
+  //Day 5
 
-  constructor(private api:HttpClient, private appService: AppserviceService) {
+  // title = '';
+  // products:any=[];
 
-    this.appService.getProducts().subscribe((response)=>{
-      this.products = response;
+  // constructor(private api:HttpClient, private appService: AppserviceService) {
+
+  //   this.appService.getProducts().subscribe((response)=>{
+  //     this.products = response;
+  //   });
+  //  }
+
+  obs: any;
+
+  constructor() {
+    this.obs = new Observable(observer=>{
+      observer.next('Hello World');
+      observer.next('Welcome to Angular');
+      observer.complete();
+    })
+  }
+
+  click(){
+    this.obs.subscribe((data:any)=>{
+      console.log(data);
     });
-   }
+  }
+
+  rowData = [
+        { make: "Tesla", model: "Model Y", price: 64950, electric: true },
+        { make: "Ford", model: "F-Series", price: 33850, electric: false },
+        { make: "Toyota", model: "Corolla", price: 29600, electric: false },
+    ];
+
+    // Column Definitions: Defines the columns to be displayed.
+    colDefs: any = [
+        { field: "make" },
+        { field: "model" },
+        { field: "price" },
+        { field: "electric" }
+    ];
 }

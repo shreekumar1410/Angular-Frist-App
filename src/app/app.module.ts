@@ -15,6 +15,8 @@ import { ProductAddComponent } from './product-page/product-add/product-add.comp
 import { ProductListComponent } from './product-page/product-list/product-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
+import { AgGridAngular } from 'ag-grid-angular';
+import type { ColDef } from 'ag-grid-community'; 
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import {MatButtonModule} from '@angular/material/button';
     ProductPageComponent,
     ProductAddComponent,
     ProductListComponent,
+  
+    
     
     
   ],
@@ -37,7 +41,8 @@ import {MatButtonModule} from '@angular/material/button';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatButtonModule
+    MatButtonModule,
+      AgGridAngular,
   ],
   providers: [],
   bootstrap: [AppComponent]
