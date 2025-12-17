@@ -7,11 +7,12 @@ import { Day2Component } from './day2/day2.component';
 import { AboutComponent } from './about/about.component';
 import { authGuard } from './auth.guard';
 import { ProductPageComponent } from './product-page/product-page.component';
+import { userPermissionResolver } from './user-permission.resolver';
 
 const routes: Routes = [
   { path:'',component: Day2Component},
   { path:'sample',component: Day2Component},
-  { path:'about',component: AboutComponent},
+  { path:'about',component: AboutComponent,resolve: {user:userPermissionResolver}},
   { path: 'profile', component: ProfilePageComponent, canActivate: [authGuard] },
   { path:'login',component: LoginPageComponent},
   { path:'register',component: RegistrationPageComponent},

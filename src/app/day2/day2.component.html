@@ -48,15 +48,23 @@
 
 <!-- Day 6 -->
 
-<button mat-raised-button color="primary" class="button" (click)="click()">Click Me</button>
+<!-- <button mat-raised-button color="primary" class="button" (click)="click()">Click Me</button> -->
 
 
     <!-- The AG Grid component -->
-    <ag-grid-angular 
+    <!-- <ag-grid-angular 
     class="ag-theme-alpine"
     style="width: 600px; height: 400px;"
     [rowData]="rowData"
     [columnDefs]="colDefs">
-</ag-grid-angular>
+</ag-grid-angular> -->
+<!-- Day 7 -->
+
+<h1>Day 7 - Angular Signals</h1>
+<p>Count: {{ count() }}</p>
+<button (click)="increment()">Increment</button>
+
+<div [@fade]="isVisible">message is displayed</div>
+
 
 

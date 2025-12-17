@@ -1,3 +1,5 @@
 <p>about works!</p>
 
-<!-- <button (click)="click()">Click Me</button> -->
+<!-- user permission     -->
+<p *ngIf="userHasPermission">User has permission to view this page.</p>
+<p *ngIf="!userHasPermission">User does not have permission to view this page.</p>

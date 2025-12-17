@@ -26,7 +26,7 @@ import type { ColDef } from 'ag-grid-community';
     DemopipePipe,
     ProfilePageComponent,
     LoginPageComponent,
-    AboutComponent,
+    // AboutComponent,
     ProductPageComponent,
     ProductAddComponent,
     ProductListComponent,
@@ -42,7 +42,7 @@ import type { ColDef } from 'ag-grid-community';
     HttpClientModule,
     BrowserAnimationsModule,
     MatButtonModule,
-      AgGridAngular,
+    AgGridAngular,
   ],
   providers: [],
   bootstrap: [AppComponent]
